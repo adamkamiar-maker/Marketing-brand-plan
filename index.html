@@ -60,15 +60,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   .bv-quarter-tabs{flex-direction:column;}
   .bv-qtab{text-align:center;}
   .top{flex-direction:column;gap:8px;}
+  .market-tabs-wrap{align-items:stretch;width:100%;}
   .market-tabs{width:100%;}
-  .mtab{flex:1;text-align:center;}
+  .mtab-wrap{flex:1;}
+  .mtab{width:100%;text-align:center;}
 }
 
 /* TOP */
 .top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:10px;}
 .top-title{font-size:20px;font-weight:600;color:var(--text);}
 .top-sub{font-size:13px;color:var(--text3);margin-top:3px;}
+.market-tabs-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.market-total-row{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;text-align:center;width:100%;}
+.market-total-row span{font-size:20px;font-weight:700;color:var(--accent);display:block;letter-spacing:0;text-transform:none;margin-top:2px;text-align:center;}
 .market-tabs{display:flex;gap:6px;}
+.mtab-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.mtab-spend{font-size:11px;font-weight:600;color:var(--accent);min-height:14px;text-align:center;}
 .mtab{padding:8px 20px;font-size:13px;font-weight:500;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--surface2);color:var(--text2);cursor:pointer;transition:all .15s;}
 .mtab:hover{background:var(--surface3);color:var(--text);}
 .mtab.active{background:linear-gradient(135deg,#1a1060,#0F1035);color:#fff;border-color:#1a1060;}
@@ -91,6 +98,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .spend-strip{display:-webkit-box;display:-webkit-flex;display:flex;gap:8px;margin-bottom:1.25rem;-webkit-flex-wrap:wrap;flex-wrap:wrap;}
 .spend-tile{flex:1;min-width:100px;background:var(--surface);border-radius:var(--radius);padding:12px 16px;border:1px solid var(--border);}
 .stl{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+.spend-total{border-top:2px solid var(--text2);}
+.spend-super{border-top:2px solid #4ade80;}
+.spend-multi{border-top:2px solid var(--purple);}
+.spend-legacy{border-top:2px solid var(--text3);}
 .stv{font-size:24px;font-weight:600;color:var(--accent);}
 .sts{font-size:12px;color:var(--text3);margin-top:3px;}
 
@@ -112,13 +123,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tier-superbrand{background:rgba(26,107,60,.3);color:#4ade80;border:1px solid rgba(74,222,128,.2);}
 .tier-multi-brand{background:rgba(91,79,207,.3);color:#a89ff5;border:1px solid rgba(168,159,245,.2);}
 .tier-legacy{background:rgba(74,74,90,.3);color:#8888aa;border:1px solid rgba(136,136,170,.2);}
-.card-spend{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:6px;}
+.card-spend{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:6px;cursor:default;}
+.card-spend span{font-size:11px;font-weight:400;color:var(--text3);margin-left:5px;}
 
 /* Active brand cards get purple top accent */
 .brand-card.card-active-accent{border-top:2px solid var(--purple);}
 .card-spend span{font-size:10px;font-weight:400;color:var(--text3);margin-left:4px;}
 .card-focus{font-size:12px;color:var(--text2);line-height:1.55;margin-bottom:8px;}
-.card-headline{font-size:15px;line-height:1.6;margin-bottom:12px;}.card-headline[style]{margin-bottom:12px;}
+.card-headline{font-size:15px;line-height:1.6;margin-bottom:12px;}
+.card-wo{background:var(--surface3);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;margin-bottom:8px;margin-top:-4px;}
+
+.card-wo-text{font-size:14px;font-weight:600;color:var(--text);line-height:1.4;}
+.wo-secondary{font-size:11px;color:var(--text3);margin-top:5px;padding-top:5px;border-top:1px solid var(--border);}.card-headline[style]{margin-bottom:12px;}
 .card-focus-body{font-size:13px;font-weight:400;color:var(--text2);}
 .bv-focus-body{font-size:12px;font-weight:400;color:var(--text2);}
 .card-ch-section{margin-top:2px;}
@@ -152,10 +168,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .bau-chs{display:flex;flex-wrap:wrap;gap:4px;}
 .bau-ch{font-size:11px;padding:4px 10px;border-radius:20px;background:var(--surface3);color:var(--text2);border:1px solid var(--border);}
 .bau-logos-row{padding:12px 18px;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:10px;background:var(--surface);-webkit-box-align:center;-webkit-align-items:center;align-items:center;}
-.bau-logo-item{width:36px;height:36px;cursor:pointer;transition:opacity .15s;flex-shrink:0;}
+.bau-logo-item{width:64px;height:64px;cursor:pointer;transition:opacity .15s,border-color .15s;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 4px;}
+.bau-logo-item:hover{opacity:.8;border-color:var(--border2);}
+.bau-item-spend{font-size:9px;font-weight:600;color:var(--accent);white-space:nowrap;}
+.bau-spend-total{font-size:12px;font-weight:500;color:var(--accent);margin-left:8px;}
 .bau-logo-item:hover{opacity:.65;}
-.bau-pill-logo{width:36px;height:36px;border-radius:0;border:none;background:transparent;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;overflow:hidden;}
-.bau-pill-logo img{width:100%;height:100%;object-fit:contain;padding:0;}
+.bau-pill-logo{width:100%;height:32px;border-radius:0;border:none;background:transparent;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;overflow:hidden;}
+.bau-pill-logo img{width:100%;height:28px;object-fit:contain;}
 .bau-pill-logo.has-img{background:transparent;}
 
 /* BRAND VIEW */
@@ -221,9 +240,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div class="top-title">Marketing Brand Plan</div>
         <div class="top-sub">Month by month view &middot; click any card for details &middot; click a logo above to see brand plan</div>
       </div>
-      <div class="market-tabs">
-        <button class="mtab active" onclick="setMarket('Finland')">Finland</button>
-        <button class="mtab" onclick="setMarket('Canada')">Canada</button>
+      <div class="market-tabs-wrap">
+        <div class="market-total-row" id="market-total-row"></div>
+        <div class="market-tabs" id="market-tabs">
+          <div class="mtab-wrap">
+            <div class="mtab-spend" id="spend-fi"></div>
+            <button class="mtab active" onclick="setMarket('Finland')">Finland</button>
+          </div>
+          <div class="mtab-wrap">
+            <div class="mtab-spend" id="spend-ca"></div>
+            <button class="mtab" onclick="setMarket('Canada')">Canada</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="month-nav">
@@ -305,6 +333,27 @@ const TC={
   Legacy:        {c:'#4a4a5a',l:'#1e1e28',lt:'#8888aa', label:'Legacy'},
 };
 function getTierLabel(tier){ return (TC[tier]||TC['Legacy']).label || tier; }
+const WELCOME_OFFERS={
+  Finland:{
+    Wildz:    {primary:'100% up to €500 + 200 Free Spins',secondary:'Sports: 100% up to €100 + 5 Free Bets up to €10'},
+    Spinz:    {primary:'100% up to €300 + 100 Free Spins',secondary:null},
+    Blingi:   {primary:'20% Daily Cashback + 250 Free Spins',secondary:null},
+    Tuplaus:  {primary:'100% extra up to €100 + 200 Free Spins',secondary:null},
+    Flamez:   {primary:'20% Daily Cashback + 200 Free Spins',secondary:null},
+    Speedz:   {primary:'300 Free Spins + 20% Daily Cashback',secondary:null},
+    Berriez:  {primary:'365 Free Spins + 20% Daily Cashback',secondary:null},
+    Beazt:    {primary:'100% up to €100 (Casino or Sports)',secondary:null},
+    Wheelz:   {primary:'100% up to €300 + 100 Free Spins',secondary:null},
+    Caxino:   {primary:'20 Free Spins on sign up + 200 Free Spins on first deposit',secondary:null},
+    Chipz:    {primary:null,secondary:null},
+  },
+  Canada:{}
+};
+function getWelcomeOffer(brand,market){
+  var mkt=WELCOME_OFFERS[market]||{};
+  return mkt[brand]||null;
+}
+
 const BAU_CH={
   Superbrand:    'Programmatic, BH Social, PPC, Affiliates, SEO, Audio (Spotify), Direct Display, Push Notifications',
   Flagship:      'Programmatic, BH Social, PPC, Affiliates, SEO, Audio (Spotify), Direct Display, Push Notifications',
@@ -332,136 +381,136 @@ const ALL_BRANDS=[
   {brand:'Chipz',   tier:'Legacy'},
 ];
 const RAW=[
-  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"April",focus:"Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Audio (Spotify, Radio etc.), Influencer Posts, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"May",focus:"Welcome Offer, Hockey World Cup, CL semi-finals, Eurovision, workers day, new game reactivation",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify, Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"New Launch",brand:"Beazt",market:"Finland",month:"May",focus:"Brand launch 19th May",channels:"Affiliates, PR, Programmatic Conversion, CRM x-sell, Meta campaigns, SEO",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"June",focus:"Welcome Offer, World Cup, Wimbeldon, Midsummer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify, Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Finland",month:"June",focus:"Beazt Fight",channels:"Affiliates, PR, Programmatic Conversion, CRM x-sell, Meta campaigns, Organic social, SEO",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"April",focus:"Welcome offer",channels:"Affiliates, Programmatic conversion and retargeting campaigns, Meta campaigns, audio ads, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"April",focus:"BAU - Welcome Offer \u00b7 New Welcome Offer",channels:"CRM x-sell, Programmatic conversion and retargeting campaigns, Meta campaigns",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"April",focus:"BAU - Welcome Offer \u00b7 Relaunch Chipz / New Design",channels:"CRM x-sell, Programmatic conversion and retargeting campaigns, Meta campaigns, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"April",focus:"New Welcome Offer",channels:"CRM x-sell, Programmatic conversion and retargeting campaigns, Meta campaigns",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"June",focus:"BAU - Welcome Offer \u00b7 New Welcome Offer",channels:"CRM x-sell, Programmatic conversion and retargeting campaigns, Meta campaigns",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"July",focus:"BAU - Welcome Offer, World Cup, Wimbeldon finals, peak holiday season Summer calendar \u00b7 New Welcome Offer Casino and Sports",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify, Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"New Launch",brand:"Beazt",market:"Finland",month:"July",focus:"Welcome Offer + World Cup",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"August",focus:"BAU - Welcome Offer, Fotball season kick-off, US Open, NFL preseason, CRM Summer campaign Casino",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify, Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Finland",month:"August",focus:"New Football season + Welcome offer",channels:"",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"September",focus:"BAU - Welcome Offer, Champions League, NFL, F1, Back to work season",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify, Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"July",focus:"New Welcome Offer (TBD)",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, BH PPC, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"August",focus:"BAU - Welcome Offer \u00b7 New Welcome Offer (TBD)",channels:"CRM x-sell, Programmatic conversion and retargeting campaigns, Meta campaigns",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"April",focus:"Welcome Offer",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Audio (Spotify, Radio etc.), Influencer Posts, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"May",focus:"Welcome Offer, workers day, mothers day, hockey",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Audio (Spotify, Radio etc.), Influencer Posts, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"May",focus:"New brand launch - welcome offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"June",focus:"Welcome Offer, World Cup, Wimbeldon, Canada Day, NBA Finals, NHL Stanley Cup",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Audio (Spotify, Radio etc.), Influencer Posts, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"June",focus:"Welcome offer + World Cup",channels:"Radio, Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Flamez",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Blingi",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Speedz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Berriez",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Tuplaus",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"July",focus:"Welcome Offer, World Cup, Wimbeldon finals, Canada day \u00b7 New Welcome Offer Sports",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Audio (Spotify, Radio etc.), Influencer Posts, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"July",focus:"Welcome offer + World Cup",channels:"Radio, Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"August",focus:"Welcome Offer, Fotball season kick-off, US Open, NFL preseason, CRM Summer campaign Casino, Civic holiday",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Audio (Spotify, Radio etc.), Influencer Posts, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"August",focus:"Welcome offer + New football season",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"September",focus:"Welcome Offer, Champions League, NFL, F1, Labour Day",channels:"Programmatic conversion and retargeting campaigns, Meta campaigns, organic brand X-sell, Audio (Spotify, Radio etc.), Influencer Posts, Direct Display (flashscore, sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:""},
-  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"September",focus:"Welcome offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic, conversion and retargeting campaigns, Meta campaigns, organic brand X-sell",investment:""},
-  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
-  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, retargeting, onsite placements",investment:""},
+  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"April",focus:"Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Audio (Spotify - Radio etc.), Influencer Posts, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:891900,group_investment:891900,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"May",focus:"Welcome Offer, Hockey World Cup, CL semi-finals, Eurovision, workers day, new game reactivation",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify - Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:906900,group_investment:906900,group_size:1,group_brands:["Wildz"]},
+  {tier:"New Launch",brand:"Beazt",market:"Finland",month:"May",focus:"Brand launch 19th May",channels:"Affiliates, PR, Programmatic Conversion, CRM x-sell, Meta campaigns, SEO",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"June",focus:"Welcome Offer, World Cup, Wimbeldon, Midsummer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify - Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:1050667,group_investment:1050667,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Finland",month:"June",focus:"Beazt Fight",channels:"Affiliates, PR, Programmatic Conversion, CRM x-sell, Meta campaigns, Organic social, SEO",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:24291,group_investment:97167,group_size:4,group_brands:["Flamez", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:24291,group_investment:97167,group_size:4,group_brands:["Flamez", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:24291,group_investment:97167,group_size:4,group_brands:["Flamez", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:24291,group_investment:97167,group_size:4,group_brands:["Flamez", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"April",focus:"Welcome offer",channels:"Affiliates, Programmatic (conversion and retargeting), Meta campaigns, audio ads, BH PPC, organic brand X-sell",investment:403167,group_investment:403167,group_size:1,group_brands:["Blingi"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"April",focus:"BAU - Welcome Offer \u00b7 New Welcome Offer",channels:"CRM x-sell, Programmatic (conversion and retargeting), Meta campaigns",investment:4000,group_investment:2000,group_size:3,group_brands:["Wheelz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:2000,group_investment:6000,group_size:3,group_brands:["Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"April",focus:"BAU - Welcome Offer \u00b7 Relaunch Chipz / New Design",channels:"CRM x-sell, Programmatic (conversion and retargeting), Meta campaigns, onsite placements",investment:4000,group_investment:2000,group_size:3,group_brands:["Chipz"]},
+  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"April",focus:"New Welcome Offer",channels:"CRM x-sell, Programmatic (conversion and retargeting), Meta campaigns",investment:10000,group_investment:10000,group_size:1,group_brands:["Caxino"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:99266,group_investment:496333,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:99266,group_investment:496333,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:99266,group_investment:496333,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:99266,group_investment:496333,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:99266,group_investment:496333,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:4000,group_investment:16000,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:4000,group_investment:16000,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:4000,group_investment:16000,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:4000,group_investment:16000,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:75200,group_investment:376000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:75200,group_investment:376000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:75200,group_investment:376000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:75200,group_investment:376000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:75200,group_investment:376000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:5250,group_investment:21000,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:5250,group_investment:21000,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"June",focus:"BAU - Welcome Offer \u00b7 New Welcome Offer",channels:"CRM x-sell, Programmatic (conversion and retargeting), Meta campaigns",investment:7250,group_investment:2000,group_size:4,group_brands:["Spinz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:5250,group_investment:21000,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"July",focus:"BAU - Welcome Offer, World Cup, Wimbeldon finals, peak holiday season Summer calendar \u00b7 New Welcome Offer Casino and Sports",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify - Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:0,group_investment:0,group_size:1,group_brands:["Wildz"]},
+  {tier:"New Launch",brand:"Beazt",market:"Finland",month:"July",focus:"Welcome Offer + World Cup",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"August",focus:"BAU - Welcome Offer, Fotball season kick-off, US Open, NFL preseason, CRM Summer campaign Casino",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify - Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:0,group_investment:0,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Finland",month:"August",focus:"New Football season + Welcome offer",channels:"",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Finland",month:"September",focus:"BAU - Welcome Offer, Champions League, NFL, F1, Back to work season",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Snapchat, Audio (Spotify - Radio etc.), Influencer Posts, Facebook Groups, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:0,group_investment:0,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:0,group_investment:0,group_size:4,group_brands:["Flamez", "Blingi", "Speedz", "Berriez"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:0,group_investment:0,group_size:4,group_brands:["Flamez", "Blingi", "Speedz", "Berriez"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:0,group_investment:0,group_size:4,group_brands:["Flamez", "Blingi", "Speedz", "Berriez"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:0,group_investment:0,group_size:4,group_brands:["Flamez", "Blingi", "Speedz", "Berriez"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"July",focus:"New Welcome Offer (TBD)",channels:"Programmatic (conversion and retargeting), Meta campaigns, BH PPC, organic brand X-sell",investment:0,group_investment:0,group_size:1,group_brands:["Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"July",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"August",focus:"BAU - Welcome Offer \u00b7 New Welcome Offer (TBD)",channels:"CRM x-sell, Programmatic (conversion and retargeting), Meta campaigns",investment:0,group_investment:0,group_size:5,group_brands:["Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"August",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Finland",month:"September",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"April",focus:"Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Audio (Spotify - Radio etc.), Influencer Posts, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:141000,group_investment:141000,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"May",focus:"Welcome Offer, workers day, mothers day, hockey",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Audio (Spotify - Radio etc.), Influencer Posts, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:150000,group_investment:150000,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"May",focus:"New brand launch - welcome offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"June",focus:"Welcome Offer, World Cup, Wimbeldon, Canada Day, NBA Finals, NHL Stanley Cup",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Audio (Spotify - Radio etc.), Influencer Posts, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:205000,group_investment:205000,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"June",focus:"Welcome offer + World Cup",channels:"Radio, Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Superbrand",brand:"Flamez",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:28600,group_investment:143000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Superbrand",brand:"Blingi",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:28600,group_investment:143000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Superbrand",brand:"Speedz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:28600,group_investment:143000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Superbrand",brand:"Berriez",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:28600,group_investment:143000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Superbrand",brand:"Tuplaus",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:28600,group_investment:143000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"April",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:44000,group_investment:220000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:44000,group_investment:220000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:44000,group_investment:220000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:44000,group_investment:220000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:44000,group_investment:220000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"May",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:47000,group_investment:235000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:47000,group_investment:235000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:47000,group_investment:235000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:47000,group_investment:235000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:47000,group_investment:235000,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"June",focus:"BAU - Welcome Offer",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"July",focus:"Welcome Offer, World Cup, Wimbeldon finals, Canada day \u00b7 New Welcome Offer Sports",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Audio (Spotify - Radio etc.), Influencer Posts, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:0,group_investment:0,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"July",focus:"Welcome offer + World Cup",channels:"Radio, Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"August",focus:"Welcome Offer, Fotball season kick-off, US Open, NFL preseason, CRM Summer campaign Casino, Civic holiday",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Audio (Spotify - Radio etc.), Influencer Posts, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:0,group_investment:0,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"August",focus:"Welcome offer + New football season",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Superbrand",brand:"Wildz",market:"Canada",month:"September",focus:"Welcome Offer, Champions League, NFL, F1, Labour Day",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell, Audio (Spotify - Radio etc.), Influencer Posts, Direct Display (flashscore - sofascore etc) BH-Social, PPC, Wildz Expertz App, Push-Notifications",investment:0,group_investment:0,group_size:1,group_brands:["Wildz"]},
+  {tier:"Superbrand",brand:"Beazt",market:"Canada",month:"September",focus:"Welcome offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:1,group_brands:["Beazt"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"July",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"July",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"August",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"August",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Multi-Brand",brand:"Flamez",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Blingi",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Speedz",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Berriez",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Multi-Brand",brand:"Tuplaus",market:"Canada",month:"September",focus:"BAU - Welcome Offer",channels:"Programmatic (conversion and retargeting), Meta campaigns, organic brand X-sell",investment:0,group_investment:0,group_size:5,group_brands:["Flamez", "Blingi", "Speedz", "Berriez", "Tuplaus"]},
+  {tier:"Legacy",brand:"Caxino",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Wheelz",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Spinz",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
+  {tier:"Legacy",brand:"Chipz",market:"Canada",month:"September",focus:"BAU - X-Sell / Reactivation",channels:"CRM, Programmatic (retargeting), onsite placements",investment:0,group_investment:0,group_size:4,group_brands:["Caxino", "Wheelz", "Spinz", "Chipz"]},
 ];
 
 let market='Finland', monthIdx=0, bauOpen=false, activeBrand=null, bvQuarter='Q2';
@@ -475,10 +524,23 @@ function fmt(v){
   return '\u20ac'+n;
 }
 function sumSpend(rows){
-  let t=0,any=false;
-  rows.forEach(r=>{const n=parseFloat(String(r.investment||'').replace(/[^0-9.]/g,''));if(!isNaN(n)&&n>0){t+=n;any=true;}});
+  var seen={};
+  var t=0;
+  var any=false;
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i];
+    if(r.investment>0){
+      var key=r.group_brands.slice().sort().join('|')+'|'+r.month+'|'+r.market;
+      if(!seen[key]){
+        seen[key]=true;
+        t+=r.group_investment;
+        any=true;
+      }
+    }
+  }
   return any?t:null;
 }
+function sumSpendTrue(rows){ return sumSpend(rows); }
 function getTier(b){return(RAW.find(r=>r.brand===b)||{tier:'Multi-Brand'}).tier;}
 function mkLogo(brand, cls, extraStyle){
   var url=LOGOS[brand];
@@ -513,31 +575,71 @@ function gotoMonth(i){
 }
 
 
-function focusToHTML(focus, month, headlineClass, bodyClass){
+function focusToHTML(focus, month, headlineClass, bodyClass, brand, mkt){
   const clean = focus.replace(/^BAU\s*[-–]\s*/i, '').trim();
   const parts = clean.split(/[,·]+/).map(s=>s.trim()).filter(Boolean);
   if(parts.length === 0) return '';
-  const primary = parts[0];
+
+  const box = 'background:rgba(123,111,240,.08);border:1px solid rgba(123,111,240,.2);border-radius:8px;padding:10px 12px;';
+  const label = '<span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--purple);display:block;margin-bottom:5px">Headline</span>';
+  const primaryText = parts[0];
+
   if(parts.length === 1){
-    return `<div class="${headlineClass}" style="background:rgba(123,111,240,.08);border:1px solid rgba(123,111,240,.2);border-radius:8px;padding:10px 12px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--purple);display:block;margin-bottom:5px">Headline</span><strong style="color:var(--text)">${primary}</strong></div>`;
+    return '<div class="'+headlineClass+'" style="'+box+'">'+label+'<strong style="color:var(--text)">'+primaryText+'</strong></div>';
   }
   const rest = parts.slice(1);
   const last = rest.pop();
   const middle = rest.length > 0 ? rest.join(', ') + ' and ' + last : last;
   const monthSuffix = month ? ' in ' + month : '';
-  return `<div class="${headlineClass}" style="background:rgba(123,111,240,.08);border:1px solid rgba(123,111,240,.2);border-radius:8px;padding:10px 12px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--purple);display:block;margin-bottom:5px">Headline</span><strong style="color:var(--text)">${primary}</strong> <span class="${bodyClass}">— also promoting ${middle}${monthSuffix}.</span></div>`;
+  return '<div class="'+headlineClass+'" style="'+box+'">'+label+'<strong style="color:var(--text)">'+primaryText+'</strong> <span class="'+bodyClass+'">— also promoting '+middle+monthSuffix+'.</span></div>';
 }
 
-function formatFocus(focus, month){
-  return focusToHTML(focus, month, 'card-headline', 'card-focus-body');
+function formatFocusInner(focus, month, brand, mkt){
+  const clean = focus.replace(/^BAU\s*[-–]\s*/i, '').trim();
+  const parts = clean.split(/[,·]+/).map(s=>s.trim()).filter(Boolean);
+  if(parts.length === 0) return '';
+  const primaryText = parts[0];
+  if(parts.length === 1) return '<strong style="color:var(--text)">'+primaryText+'</strong>';
+  const rest = parts.slice(1);
+  const last = rest.pop();
+  const middle = rest.length > 0 ? rest.join(', ') + ' and ' + last : last;
+  const monthSuffix = month ? ' in ' + month : '';
+  return '<strong style="color:var(--text)">'+primaryText+'</strong> <span class="card-focus-body">— also promoting '+middle+monthSuffix+'.</span>';
 }
 
-function formatFocusBv(focus, month){
-  return focusToHTML(focus, month, 'bv-focus', 'bv-focus-body');
+function formatFocus(focus, month, brand, mkt){
+  return focusToHTML(focus, month, 'card-headline', 'card-focus-body', brand, mkt);
+}
+
+function formatFocusBv(focus, month, brand, mkt){
+  return focusToHTML(focus, month, 'bv-focus', 'bv-focus-body', brand, mkt);
+}
+
+function updateMarketSpend(){
+  var month=ALL_MONTHS[monthIdx];
+  var fiRows=RAW.filter(function(r){return r.market==='Finland'&&r.month===month;});
+  var caRows=RAW.filter(function(r){return r.market==='Canada'&&r.month===month;});
+  var allRows=RAW.filter(function(r){return r.month===month;});
+  var fiTotal=sumSpend(fiRows);
+  var caTotal=sumSpend(caRows);
+  var grandTotal=sumSpend(allRows);
+  var fiEl=document.getElementById('spend-fi');
+  var caEl=document.getElementById('spend-ca');
+  var totEl=document.getElementById('market-total-row');
+  if(fiEl) fiEl.textContent=fiTotal?fmt(fiTotal):'';
+  if(caEl) caEl.textContent=caTotal?fmt(caTotal):'';
+  if(totEl){
+    if(grandTotal){
+      totEl.innerHTML='Total Investment '+month+'<span>'+fmt(grandTotal)+'</span>';
+    } else {
+      totEl.innerHTML='';
+    }
+  }
 }
 
 function render(){
   buildBrandBar();
+  updateMarketSpend();
   document.getElementById('month-pills').innerHTML=ALL_MONTHS.map((m,i)=>
     `<button class="mpill${i===monthIdx?' active':''}" onclick="gotoMonth(${i})">${m}</button>`
   ).join('');
@@ -548,12 +650,16 @@ function render(){
   const missing=rows.filter(r=>r.tier!=='Superbrand'&&r.tier!=='Flagship'&&(!r.focus||r.focus==='')&&r.tier!=='New Launch');
   const bau=rows.filter(r=>r.tier!=='Superbrand'&&r.tier!=='Flagship'&&r.focus&&isBau(r.focus));
 
-  const gt=sumSpend(rows),ta=sumSpend(active),tb=sumSpend(bau);
-  const strip=document.getElementById('spend-strip');
-  let sh='';
-  if(gt)sh+=`<div class="spend-tile"><div class="stl">Total</div><div class="stv">${fmt(gt)}</div><div class="sts">${month} &middot; ${market}</div></div>`;
-  if(ta)sh+=`<div class="spend-tile"><div class="stl">Active</div><div class="stv">${fmt(ta)}</div><div class="sts">${active.length} brand${active.length!==1?'s':''}</div></div>`;
-  if(tb)sh+=`<div class="spend-tile"><div class="stl">BAU</div><div class="stv">${fmt(tb)}</div><div class="sts">${bau.length} brand${bau.length!==1?'s':''}</div></div>`;
+  var superspend=sumSpendTrue(rows.filter(function(r){return r.tier==='Superbrand'||r.tier==='Flagship';}));
+  var multispend=sumSpendTrue(rows.filter(function(r){return r.tier==='Multi-Brand';}));
+  var legspend=sumSpendTrue(rows.filter(function(r){return r.tier==='Legacy';}));
+  var gt=sumSpendTrue(rows);
+  var strip=document.getElementById('spend-strip');
+  var sh='';
+  if(gt)sh+='<div class="spend-tile spend-total"><div class="stl">Total investment</div><div class="stv">'+fmt(gt)+'</div><div class="sts">'+month+' &middot; '+market+'</div></div>';
+  if(superspend)sh+='<div class="spend-tile spend-super"><div class="stl">Superbrand</div><div class="stv">'+fmt(superspend)+'</div><div class="sts">Wildz &amp; Beazt</div></div>';
+  if(multispend)sh+='<div class="spend-tile spend-multi"><div class="stl">Multi-Brand</div><div class="stv">'+fmt(multispend)+'</div><div class="sts">Group total</div></div>';
+  if(legspend)sh+='<div class="spend-tile spend-legacy"><div class="stl">Legacy</div><div class="stv">'+fmt(legspend)+'</div><div class="sts">Retention</div></div>';
   strip.innerHTML=sh;strip.style.display=sh?'flex':'none';
 
   let html='';
@@ -570,8 +676,17 @@ function render(){
           ${mkLogo(r.brand,'card-logo','')}
           <div><div class="card-brand">${r.brand}</div><div class="card-tier-badge tier-${(TC[r.tier]||TC.Legacy).label.replace(' ','-').toLowerCase()}">${getTierLabel(r.tier)}</div></div>
         </div>
-        ${sf?`<div class="card-spend">${sf}<span>this month</span></div>`:''}
-        ${r.focus?formatFocus(r.focus,month):`<div class="card-missing">Missing data</div>`}
+        ${r.investment?(r.group_size>1?'<div class="card-spend" title="Group total: '+fmt(r.group_investment)+' ('+r.group_size+' brands, '+fmt(r.investment)+' each)" style="cursor:help">'+fmt(r.investment)+'<span>est. per brand &#9432;</span></div>':'<div class="card-spend">'+fmt(r.investment)+'<span>this month</span></div>'):''}
+        ${(function(){
+          var wo=getWelcomeOffer(r.brand,market);
+          var box='background:rgba(123,111,240,.08);border:1px solid rgba(123,111,240,.2);border-radius:8px;padding:10px 12px;margin-bottom:8px;';
+          var label='<span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--purple);display:block;margin-bottom:5px">Headline</span>';
+          if(!r.focus) return '<div style="'+box+'"><div class="card-missing">Missing data</div></div>';
+          var headlineHTML=formatFocusInner(r.focus,month,r.brand,market);
+          if(!wo||!wo.primary) return '<div class="card-headline" style="'+box+'">'+label+headlineHTML+'</div>';
+          var sec=wo.secondary?'<div class="wo-secondary">Also: '+wo.secondary+'</div>':'';
+          return '<div class="card-headline" style="'+box+'">'+label+headlineHTML+'<div class="wo-divider"></div><div class="card-wo-text">'+wo.primary+'</div>'+sec+'</div>';
+        })()}
         ${chs.length?`<div class="card-ch-section"><div class="card-ch-label">Channels</div><div class="card-chs">${chs.slice(0,4).map(c=>`<span class="ch-tag">${c}</span>`).join('')}${chs.length>4?`<span class="ch-tag">+${chs.length-4} more</span>`:''}</div></div>`:''}
       </div>`;
     });
@@ -587,7 +702,7 @@ function render(){
     <div class="bau-section">
       <div class="bau-header" onclick="toggleBau()">
         <div class="bau-hl">
-          <div class="bau-title">${bau.length} brand${bau.length!==1?'s':''} running business as usual</div>
+          <div class="bau-title">${bau.length} brand${bau.length!==1?'s':''} running business as usual${sumSpend(bau)?` <span class="bau-spend-total">${fmt(sumSpend(bau))}</span>`:''}</div>
           <div class="bau-sub">Standard welcome offer &middot; existing channel mix &middot; consistent investment</div>
           <div class="bau-logo-strip">${bau.map(r=>`<div class="bau-strip-item" title="${r.brand}">${mkLogo(r.brand,'bau-strip-logo','')}</div>`).join('')}</div>
         </div>
@@ -604,8 +719,10 @@ function render(){
         </div>
         <div class="bau-logos-row">`;
       tRows.forEach(r=>{
-        html+=`<div class="bau-logo-item" title="${r.brand}" onclick='openM(${JSON.stringify({brand:r.brand,month,tier:r.tier,focus:r.focus,channels:r.channels,investment:r.investment}).replace(/'/g,"&#39;")})'>
+        var bau_spend=r.investment?fmt(r.investment):'';
+        html+=`<div class="bau-logo-item ${r.investment?'has-spend':''}" title="${r.brand}" onclick='openM(${JSON.stringify({brand:r.brand,month,tier:r.tier,focus:r.focus,channels:r.channels,investment:r.investment,group_investment:r.group_investment,group_size:r.group_size,group_brands:r.group_brands}).replace(/'/g,"&#39;")})'>
           ${mkLogo(r.brand,'bau-pill-logo','')}
+          ${r.investment?`<div class="bau-item-spend">${fmt(r.investment)}</div>`:''}
         </div>`;
       });
       html+=`</div></div>`;
@@ -672,7 +789,7 @@ function renderBrandContent(){
     html+=`<div class="bv-mkt-block">
       <div class="bv-mkt-row">
         <div class="bv-mkt-label">${mkt}</div>
-        ${tot?`<div class="bv-tot">${fmt(tot)}<span>total</span></div>`:''}
+        ${tot?`<div class='bv-tot'>${fmt(tot)}<span>Q2/Q3 total</span></div>`:''}
       </div>
       <div class="bv-grid">`;
     mrows.forEach(r=>{
@@ -683,8 +800,8 @@ function renderBrandContent(){
       const chs=(r.channels||(isBau2?BAU_CH[tier]||'':'')).split(',').map(s=>s.trim()).filter(Boolean);
       html+=`<div class="bv-card${isAct?' is-active':''}" style="${isAct?'--ac:'+c.c+'88':''}">
         <div class="bv-mname">${r.month}</div>
-        ${sf?`<div class="bv-spend">${sf}</div>`:''}
-        ${isMissing?`<div class="bv-missing">Missing data</div>`:isBau2?`<div class="bv-bau">${r.focus}</div>`:formatFocusBv(r.focus,r.month)}
+        ${r.investment?`<div class="bv-spend">${fmt(r.investment)}${r.group_size>1?' <span style="font-size:11px;font-weight:400;color:var(--text3)">est. per brand</span>':''}</div>`:''}
+        ${isMissing?`<div class="bv-missing">Missing data</div>`:isBau2?`<div class="bv-bau">${r.focus}</div>`:formatFocusBv(r.focus,r.month,r.brand,mkt)}
         ${chs.length?`<div class="bv-chs">${chs.slice(0,3).map(c=>`<span class="bv-ch">${c}</span>`).join('')}${chs.length>3?`<span class="bv-ch">+${chs.length-3}</span>`:''}</div>`:''}
       </div>`;
     });
@@ -709,10 +826,18 @@ function openM(d){
   const cw=document.getElementById('m-chs-w');
   if(chs.length){cw.style.display='block';document.getElementById('m-chs').innerHTML=chs.map(c=>`<span class="mtag">${c}</span>`).join('');}
   else cw.style.display='none';
-  const sf=fmt(d.investment);
-  const sw=document.getElementById('m-sp-w');
-  if(sf){sw.style.display='block';document.getElementById('m-sp').textContent=sf;}
-  else sw.style.display='none';
+  var sw=document.getElementById('m-sp-w');
+  var spEl=document.getElementById('m-sp');
+  if(d.investment>0){
+    sw.style.display='block';
+    var spHtml=fmt(d.investment);
+    if(d.group_size>1){
+      spHtml+=' <span style="color:var(--text3);font-size:11px;">per brand (est.)</span><br><span style="color:var(--text3);font-size:11px;">Group total: '+fmt(d.group_investment)+' across '+d.group_size+' brands</span>';
+    }
+    spEl.innerHTML=spHtml;
+  } else {
+    sw.style.display='none';
+  }
   document.getElementById('mbg').classList.add('open');
 }
 function closeMod(e){
