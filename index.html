@@ -239,6 +239,47 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </style>
 </head>
 <body>
+<style>
+#pw-overlay{position:fixed;inset:0;background:#0a0b0f;z-index:9999;display:flex;align-items:center;justify-content:center;}
+#pw-box{background:#13151a;border:1px solid #2e3240;border-radius:14px;padding:2.5rem 2rem;width:100%;max-width:360px;text-align:center;}
+#pw-logo{font-size:22px;font-weight:700;color:#f0f2f7;margin-bottom:6px;letter-spacing:.02em;}
+#pw-sub{font-size:13px;color:#50566a;margin-bottom:1.75rem;}
+#pw-input{width:100%;padding:11px 14px;background:#1a1d24;border:1px solid #2e3240;border-radius:8px;color:#f0f2f7;font-size:14px;outline:none;margin-bottom:10px;text-align:center;letter-spacing:.05em;}
+#pw-input:focus{border-color:#7B6FF0;}
+#pw-btn{width:100%;padding:11px;background:linear-gradient(135deg,#1a1060,#0F1035);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s;}
+#pw-btn:hover{opacity:.85;}
+#pw-err{font-size:12px;color:#e05555;margin-top:8px;min-height:18px;}
+</style>
+<div id="pw-overlay">
+  <div id="pw-box">
+    <div id="pw-logo">Wildz Group</div>
+    <div id="pw-sub">Marketing Brand Plan &middot; Internal use only</div>
+    <input id="pw-input" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPw()">
+    <button id="pw-btn" onclick="checkPw()">Access Dashboard</button>
+    <div id="pw-err"></div>
+  </div>
+</div>
+<script>
+function checkPw(){
+  var v=document.getElementById('pw-input').value;
+  if(v==='Wildz#2025$xK9'){
+    document.getElementById('pw-overlay').style.display='none';
+    sessionStorage.setItem('wbp_auth','1');
+  } else {
+    var e=document.getElementById('pw-err');
+    e.textContent='Incorrect password. Please try again.';
+    document.getElementById('pw-input').value='';
+    setTimeout(function(){e.textContent='';},3000);
+  }
+}
+if(sessionStorage.getItem('wbp_auth')==='1'){
+  document.addEventListener('DOMContentLoaded',function(){
+    var o=document.getElementById('pw-overlay');
+    if(o)o.style.display='none';
+  });
+}
+</script>
+
 <div class="wrap">
 
   <!-- Brand bar -->
